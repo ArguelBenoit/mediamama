@@ -1,0 +1,32 @@
+{
+  "name": "api-hapi",
+  "version": "0.0.0",
+  "description": "API of mediamama with hapi.js",
+  "main": "server.js",
+  "author": "Benoit Arguel",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "boom": "^3.1.2",
+    "glob": "^7.0.0",
+    "hapi": "^13.0.0",
+    "hapi-auth-jwt": "^4.0.0",
+    "joi": "^8.0.4",
+    "joi-date-extensions": "^1.2.0",
+    "joi-objectid": "^2.0.0",
+    "jsonwebtoken": "^5.7.0",
+    "moment": "^2.24.0",
+    "mongoose": "^4.4.5"
+  },
+  "engines": {
+    "node": "10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.2",
+    "eslint-config-benoitarguel": "^0.2.2",
+    "eslint-plugin-react": "^7.12.4",
+    "nodemon": "^1.18.10"
+  }
+}

@@ -1,0 +1,9 @@
+package-lock.json
+npm-debug.log
+node_modules/
+public/
+dist/
+.git/
+.gitignore
+LICENSE
+README.md

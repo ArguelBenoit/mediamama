@@ -1,0 +1,48 @@
+
+.sideBar {
+  float: left;
+  max-width: 240px;
+  min-width: 240px;
+  min-height: 100vh;
+  background: #202020;
+  color: #ccc;
+  .logo {
+    border-radius: 3px;
+    margin: 15px;
+    border: 2px dashed #555;
+    padding: 40px 20px;
+    font-size: 24px;
+    text-align: center;
+    background: rgba(100, 100, 100, 0.15);
+  }
+  ul {
+    margin: 15px;
+    background: #2f2f2f;
+    border-radius: 3px;
+    border-bottom: 2px solid #111;
+    border-right: 2px solid #111;
+    overflow: hidden;
+  }
+  .toggleButton {
+    display: none;
+    width: 50px;
+    height: 50px;
+    background: #2f2f2f;
+    position: absolute;
+    top: 50%;
+    left: 205px;
+    margin-top: -33px;
+    border-radius: 50%;
+    border: 8px solid #202020;
+    svg {
+      color: #ccc;
+      height: 24px;
+      width: 24px;
+      padding: 13px;
+      transform: rotateY(180deg) translateX(-12px);
+    }
+    &:toggled svg {
+      transform: translateX(12px);
+    }
+  }
+}
