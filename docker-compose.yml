@@ -21,6 +21,7 @@ services:
       - ./hapi:/app/hapi
     ports:
       - 8000:8000
+    command: npm run start
     depends_on:
       - mongo
 
@@ -31,6 +32,7 @@ services:
       - ./react:/app/react
     ports:
       - 3000:3000
+    command: npm run dev
     depends_on:
     - hapi
 

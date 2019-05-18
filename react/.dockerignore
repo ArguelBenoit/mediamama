@@ -1,9 +1,2 @@
-package-lock.json
+node_modules
 npm-debug.log
-node_modules/
-public/
-dist/
-.git/
-.gitignore
-LICENSE
-README.md
