@@ -1,27 +1,24 @@
 import React from 'react';
 import { destroyJwtCookie } from 'Utils/jwtCookie';
-import { TiChartLine, TiFlash } from 'react-icons/ti';
-import { FaStreetView, FaChevronRight } from 'react-icons/fa';
+import { TiChartLine } from 'react-icons/ti';
+import { FaChevronRight } from 'react-icons/fa';
 import { MdSentimentSatisfied } from 'react-icons/md';
-import { IoIosChatbubbles, IoIosSettings, IoMdLogOut } from 'react-icons/io';
+import { IoMdLogOut } from 'react-icons/io';
 import LiSideBar from 'Components/liSideBar';
 import 'Styles/sideBar.less';
 
 export default class extends React.Component {
   render() {
     return <div className="sideBar">
-      <div className="logo">
-        Logotype<br />here !
-      </div>
       <ul>
-        <LiSideBar route="/dashboard" name="Dashboard" icon={<TiChartLine />} />
-        <LiSideBar route="/messages" name="Messages" icon={<IoIosChatbubbles />} />
-        <LiSideBar route="/speedDating" name="Speed dating" icon={<TiFlash />} />
-        <LiSideBar route="/members" name="Members" icon={<FaStreetView />} />
+        <LiSideBar route="/" name="All news" icon={<TiChartLine />} />
+        <LiSideBar route="/categ1" name="Categ 1" icon={<TiChartLine />} />
+        <LiSideBar route="/categ2" name="Categ 2" icon={<TiChartLine />} />
+        <LiSideBar route="/categ3" name="Categ 3" icon={<TiChartLine />} />
       </ul>
       <ul>
-        <LiSideBar route="/profile" name="Profile" icon={<MdSentimentSatisfied />} small />
-        <LiSideBar route="/settings" name="Settings" icon={<IoIosSettings />} small />
+        <LiSideBar route="/login" name="Login" icon={<MdSentimentSatisfied />} small />
+        <LiSideBar route="/write" name="write an new article" icon={<MdSentimentSatisfied />} small />
         <LiSideBar route="/" name="Logout" icon={<IoMdLogOut />} onClick={() => destroyJwtCookie('/')} small />
       </ul>
       <div className="toggleButton">

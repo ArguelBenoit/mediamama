@@ -7,12 +7,8 @@ import history from 'Utils/history';
 import PrivateRoute from 'Components/privateRoute';
 // pages
 import Login from 'Pages/login';
-import Dashboard from 'Pages/dashboard';
-import Profile from 'Pages/profile';
-import Dating from 'Pages/dating';
-import Messages from 'Pages/messages';
-import Members from 'Pages/members';
-import Settings from 'Pages/settings';
+import Read from 'Pages/read';
+import Write from 'Pages/write';
 import Error from 'Pages/error';
 
 
@@ -20,13 +16,12 @@ class App extends React.Component {
   render() {
     return <Router history={history} >
       <Switch>
-        <Route path="/" exact component={Login} title="Login" />
-        <PrivateRoute path="/dashboard" exact component={Dashboard} title="Dashboard" />
-        <PrivateRoute path="/speedDating" exact component={Dating} title="Dating"/>
-        <PrivateRoute path="/messages" exact component={Messages} title="Messages" />
-        <PrivateRoute path="/members" exact component={Members} title="Members" />
-        <PrivateRoute path="/profile" exact component={Profile} title="Profile"/>
-        <PrivateRoute path="/settings" exact component={Settings} title="Settings"/>
+        <Route path="/" exact component={Read} title="Read" />
+        <Route path="/categ1" exact component={Read} title="Read" />
+        <Route path="/categ2" exact component={Read} title="Read" />
+        <Route path="/categ3" exact component={Read} title="Read" />
+        <Route path="/login" exact component={Login} title="Login" />
+        <PrivateRoute path="/write" exact component={Write} title="Write"/>
         <Route component={Error} />
       </Switch>
     </Router>;

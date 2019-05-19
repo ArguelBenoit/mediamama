@@ -1,7 +1,6 @@
 import React from 'react';
 import FormLogin from 'Components/formLogin';
 import FormSubscribe from 'Components/formSubscribe';
-import background from 'Images/dating.jpg';
 import 'Styles/login.less';
 import { destroyJwtCookie } from 'Utils/jwtCookie';
 import PropTypes from 'prop-types';
@@ -80,7 +79,6 @@ class Login extends React.Component {
     return <div
       ref="container"
       className="container-page"
-      style={{backgroundImage: `url('${background}')`}}
     >
       <div className="container-container-form">
         <div {...propsContainerForm}>
