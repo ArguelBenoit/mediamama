@@ -1,39 +1,33 @@
 .liSideBar  {
   list-style-type: none;
-  color: #ccc;
+  color: #383838;
+  z-index: 1;
+  padding-top: 50px;
   li {
     margin-bottom: 0px;
     padding: 0 10px;
     height: 52px;
     box-sizing: border-box;
-    span {
-      margin-left: 10px;
-    }
+    span { margin-left: 10px; }
     svg {
       position: relative;
       top: 10px;
       height: 20px;
       width: 20px;
       padding: 6px;
-      background: black;
-      border-radius: 10px;
+      background: #909090;
+      border-radius: 50%;
+      color: white;
     }
     &:hover,
     &:focus {
-      background: #003856;
-      color: white;
-      border-bottom: 1px solid #00b2ff;
-      svg {
-        background: #00b2ff;
-      }
+      background: #dedbd6;
+      svg { background: #000; }
     }
     &.active {
-      background: #560000;
-      color: white;
-      border-bottom: 1px solid #ff0063;
-      svg {
-        background: #ff0063;
-      }
+      background: #e4dfd7;
+      border-right: solid 2px #af8e72;
+      svg { background: #000; }
     }
     &.small {
       height: 40px;
@@ -42,7 +36,6 @@
         height: 16px;
         width: 16px;
         padding: 4px;
-        border-radius: 10px;
       }
     }
   }
