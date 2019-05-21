@@ -5,6 +5,7 @@ import 'Styles/main.less';
 import '@babel/polyfill';
 import history from 'Utils/history';
 import PrivateRoute from 'Components/privateRoute';
+// import MainLayout from 'Components/mainLayout';
 // pages
 import Login from 'Pages/login';
 import Read from 'Pages/read';
@@ -15,6 +16,7 @@ import Error from 'Pages/error';
 class App extends React.Component {
   render() {
     return <Router history={history} >
+      // <MainLayout />
       <Switch>
         <Route path="/" exact component={Read} title="Read" />
         <Route path="/categ1" exact component={Read} title="Read" />

@@ -4,12 +4,13 @@ header {
   width: 100%;
   z-index: 2;
   transition-duration: 300ms;
-  height: 90px;
+  height: 70px;
   h1 {
     color: #fff;
     text-align: center;
-    margin: 15px 0;
+    margin: 11px 0;
     transition-duration: 300ms;
+    font-size: 4rem;
   }
   .button-menu {
     cursor: pointer;
@@ -19,8 +20,8 @@ header {
     position: absolute;
     background: #000;
     border-radius: 25%;
-    top: 20px;
-    left: 15px;
+    top: 10px;
+    left: 10px;
     div {
       transition-duration: 200ms;
       background: #e4dfd7;
@@ -38,18 +39,6 @@ header {
       background: #111;
       div:first-child { transform: translateY(-10px); }
       div:last-child { transform: translateY(10px); }
-    }
-  }
-  &.small {
-    height: 60px;
-    h1 {
-      font-size: 3.8rem;
-      margin: 7px 0;
-    }
-    .button-menu {
-      top: 5px;
-      transform: scale(0.8);
-      left: 6px;
     }
   }
 }

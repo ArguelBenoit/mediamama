@@ -6,7 +6,11 @@
   min-height: 100vh;
   background: #f1f1f1;
   color: #ccc;
+  left: -240px;
   z-index: 1;
+  &.active {
+    left: 0px
+  }
   a, a:hover { color: #383838; }
   .logo {
     border-radius: 3px;
@@ -43,6 +47,6 @@
     }
   }
   ul:first-child {
-    transition-duration: 300ms;
+    margin-top: 70px;
   }
 }

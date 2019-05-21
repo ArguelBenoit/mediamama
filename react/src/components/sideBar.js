@@ -8,11 +8,9 @@ import LiSideBar from 'Components/liSideBar';
 import 'Styles/sideBar.less';
 
 export default props => {
-  const style = {
-    left: props.menu ? '0px' : '-240px'
-  };
-  return <div style={style} className={'sideBar ' + (props.small ? 'small' : '')}>
-    <ul style={{marginTop: props.small ? '60px' : '90px'}} >
+  const className = `sideBar ${props.menu ? 'active' : ''}`
+  return <div className={className}>
+    <ul>
       <LiSideBar route="/" name="All news" icon={<TiChartLine />} />
       <LiSideBar route="/categ1" name="Categ 1" icon={<TiChartLine />} />
       <LiSideBar route="/categ2" name="Categ 2" icon={<TiChartLine />} />
