@@ -4,7 +4,6 @@
   position: fixed;
   min-height: 100vh;
   background: #f1f1f1;
-  // border-right: 1px solid #d8d8d8;
   color: #ccc;
   z-index: 1;
   a, a:hover { color: #383838; }
@@ -18,7 +17,6 @@
     background: rgba(100, 100, 100, 0.15);
   }
   ul {
-    // background: #2f2f2f;
     overflow: hidden;
   }
   .toggleButton {
@@ -44,6 +42,10 @@
     }
   }
   ul:first-child {
-    margin-top: 70px; // 15 + 70px (height header);
+    transition-duration: 300ms;
+    margin-top: 130px;
+  }
+  &.small ul:first-child {
+    margin-top: 100px;
   }
 }

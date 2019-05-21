@@ -1,11 +1,51 @@
 header {
-    height: 70px;
-    background: #f1f1f1;
-    position: fixed;
-    width: 100%;
-    z-index: 2;
-    box-shadow: 0 0 9px #bfbfbf;
-    h1 {
-        text-align: center;
+  background: #20232a;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  transition-duration: 300ms;
+  height: 90px;
+  h1 {
+    color: #fff;
+    text-align: center;
+    margin: 15px 0;
+    transition-duration: 300ms;
+  }
+  .button-menu {
+    cursor: pointer;
+    transition-duration: 300ms;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: #000;
+    border-radius: 30%;
+    top: 20px;
+    left: 20px;
+    div {
+      background: #e4dfd7;
+      position: absolute;
+      top: 23.5px;
+      left: 12px;
+      width: 26px;
+      height: 3px;
     }
+    div:first-child {
+      transform: translateY(-8px);
+    }
+    div:last-child {
+      transform: translateY(8px);
+    }
+  }
+  &.small {
+    height: 60px;
+    h1 {
+      font-size: 3.8rem;
+      margin: 7px 0;
+    }
+    .button-menu {
+      top: 5px;
+      transform: scale(0.8);
+      left: 6px;
+    }
+  }
 }
