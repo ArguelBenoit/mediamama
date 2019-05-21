@@ -18,22 +18,26 @@ header {
     height: 50px;
     position: absolute;
     background: #000;
-    border-radius: 30%;
+    border-radius: 25%;
     top: 20px;
-    left: 20px;
+    left: 15px;
     div {
+      transition-duration: 200ms;
       background: #e4dfd7;
       position: absolute;
       top: 23.5px;
       left: 12px;
       width: 26px;
       height: 3px;
+      border-radius: 1px;
     }
-    div:first-child {
-      transform: translateY(-8px);
-    }
-    div:last-child {
-      transform: translateY(8px);
+    div:first-child { transform: translateY(-8px); }
+    div:last-child { transform: translateY(8px); }
+    &:hover { background: #111; }
+    &:active {
+      background: #111;
+      div:first-child { transform: translateY(-10px); }
+      div:last-child { transform: translateY(10px); }
     }
   }
   &.small {
