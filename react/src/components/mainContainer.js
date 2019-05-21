@@ -1,8 +1,12 @@
 import React from 'react';
 import 'Styles/mainContainer.less';
 
-export default () => {
+export default props => {
   return <div className="mainContainer">
-    <div />
+    {
+      props.content ?
+        props.content :
+        ''
+    }
   </div>;
 };
