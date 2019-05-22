@@ -1,102 +1,158 @@
 import React from 'react';
-import FormLogin from 'Components/formLogin';
-import FormSubscribe from 'Components/formSubscribe';
+import ReactDOM from 'react-dom';
+import request from 'Utils/request';
+import emailValidation from 'Utils/emailValidation';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { setJwtCookie } from 'Utils/jwtCookie';
 import 'Styles/login.less';
-import { destroyJwtCookie } from 'Utils/jwtCookie';
-import PropTypes from 'prop-types';
 
-class Login extends React.Component {
+const placeholder = {
+  init : {
+    login: 'Email or username',
+    password: 'Password'
+  },
+  error: {
+    login: 'Incorrect email or username',
+    password: 'Or incorrect password'
+  }
+};
+
+export default class extends React.Component {
   constructor (props) {
     super(props);
+    this.changeValue = this.changeValue.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleBorderError = this.toggleBorderError.bind(this);
+    this.globalErrorHandler = this.globalErrorHandler.bind(this);
     this.state = {
-      mode: 'login',
-      animationStyle: {
-        transitionDuration: '300ms',
-        transform: 'translateY(0px)',
-        opacity: 1
-      }
+      login: '',
+      password: '',
+      showPassword: false,
+      placeholderLogin: placeholder.init.login,
+      placeholderPassword: placeholder.init.password
     };
   }
-  componentDidMount() {
-    this.init();
-    destroyJwtCookie();
-  }
-  componentDidUpdate(prevProps) {
-    if (this.props.path !== prevProps.path) {
-      destroyJwtCookie();
+  changeValue(event, name) {
+    let { value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    this.toggleBorderError(name, false);
+    switch (name) {
+      case 'login':
+        this.setState({placeholderLogin: placeholder.init.login});
+        break;
+      case 'password':
+        this.setState({placeholderPassword: placeholder.init.password});
+        break;
+      default:
     }
   }
-  init() {
+  toggleBorderError(ref, bool) {
+    if (bool) {
+      ReactDOM
+        .findDOMNode(this.refs[ref])
+        .classList
+        .add('u-border-error');
+    } else {
+      ReactDOM
+        .findDOMNode(this.refs[ref])
+        .classList
+        .remove('u-border-error');
+    }
+  }
+  globalErrorHandler() {
+    this.toggleBorderError('login', true);
+    this.toggleBorderError('password', true);
+    this.refs['login'].value = '';
+    this.refs['password'].value = '';
     this.setState({
-      animationStyle: {
-        transitionDuration: '300ms',
-        transform: 'translateY(0px)',
-        opacity: 1
-      }
+      login: '',
+      password: '',
+      placeholderLogin: placeholder.error.login,
+      placeholderPassword: placeholder.error.password
     });
   }
-  switchMode(event) {
-    let {
-      mode
-    } = this.state;
+  handleSubmit(event) {
     event.preventDefault();
-    // sortie du formulaire
-    this.setState({
-      animationStyle: {
-        transitionDuration: '300ms',
-        transform: 'translateY(20px)',
-        opacity: 0
-      }
-    });
-    // repositionnement du formulaire avant arrivé
-    setTimeout(() =>
-      this.setState({
-        mode: mode === 'login' ? 'subscribe' : 'login',
-        animationStyle: {
-          transitionDuration: '0ms',
-          transform: 'translateY(-20px)',
-          opacity: 0
-        }
-      })
-    ,300);
-    // repositionnement du formulaire
-    setTimeout(
-      () => this.setState({
-        animationStyle: {
-          transitionDuration: '300ms',
-          transform: 'translateY(0px)',
-          opacity: 1
-        }
-      })
-    ,350);
-  }
-  render () {
-    const { mode, animationStyle } = this.state;
-    let propsContainerForm = {
-      className: `container-form ${mode}`,
-      style: animationStyle
+    const { login, password } = this.state;
+    let postObj = {
+      [emailValidation(login) ? 'email' : 'username']: login,
+      password
     };
-    return <div
-      ref="container"
-      className="container-page"
-    >
-      <div className="container-container-form">
-        <div {...propsContainerForm}>
-          {mode === 'login' ?
-            <FormLogin /> :
-              <FormSubscribe />
+    request('post', '/api/users/authenticate', postObj)
+      .then(res => {
+        setJwtCookie(res.data.id_token, '/dashboard');
+      })
+      .catch(err => {
+        if (err.response && err.response.data.message === 'Incorrect username or email!') {
+          this.globalErrorHandler();
+        }
+        if (
+          err.response &&
+          err.response.data.validation &&
+          err.response.data.validation.keys
+        ) {
+          err.response.data.validation.keys.forEach(key => {
+            switch (key) {
+              case 'username' || 'email':
+                this.toggleBorderError('login', true);
+                break;
+              case 'password':
+                this.toggleBorderError('password', true);
+                break;
+              default:
             }
-            <a href="" onClick={e => this.switchMode(e)}>
-              {'Switch to ' + ( mode === 'login' ? 'subscribe' : 'login')}
-            </a>
-        </div>
-      </div>
+          });
+        }
+      });
+  }
+  render() {
+    const {
+      showPassword,
+      login,
+      password,
+      placeholderLogin,
+      placeholderPassword
+    } = this.state;
+    return <div className="login u-max-width-l">
+      <h1>Login</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+      </p>
+      <form className="u-max-width-s" onSubmit={this.handleSubmit}>
+        <input
+          ref="login"
+          value={login}
+          type="text"
+          className="u-full-width"
+          placeholder={placeholderLogin}
+          onChange={e => this.changeValue(e, 'login')}
+        />
+        <input
+          ref="password"
+          value={password}
+          className="u-full-width"
+          type={showPassword ? 'text' : 'password'}
+          placeholder={placeholderPassword}
+          onChange={e => this.changeValue(e, 'password')}
+        />
+        {!showPassword ?
+          <FaEyeSlash
+            className="eye-icon"
+            onClick={() => this.setState({showPassword: !showPassword})}
+          /> :
+          <FaEye
+            className="eye-icon"
+            onClick={() => this.setState({showPassword: !showPassword})}
+          />
+        }
+        <input
+          type="submit"
+          value="Submit"
+          className="button-primary u-full-width"
+        />
+      </form>
     </div>;
   }
 }
-
-Login.propTypes = {
-  path: PropTypes.string
-};
-
-export default Login;

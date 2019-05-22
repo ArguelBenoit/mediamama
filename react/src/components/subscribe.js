@@ -4,8 +4,8 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import request from 'Utils/request';
 import moment from 'moment';
 import { setJwtCookie } from 'Utils/jwtCookie';
+import 'Styles/login.less';
 const regexPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
-import config from '~/config.js';
 
 const placeholder = {
   init : {
@@ -149,85 +149,92 @@ export default class extends React.Component {
 
     return <div className="subscribe">
       <h1>Subscribe</h1>
-      <form onSubmit={this.handleSubmit}>
-        <legend>
-          Username*
-        </legend>
-        <input
-          type="text"
-          ref="username"
-          value={username}
-          placeholder={placeholderUsername}
-          alt="ton titre" title="ton titre"
-          onChange={e => this.changeValue(e, 'username')}
-        />
-        <legend>
-          Email*
-        </legend>
-        <input
-          type="email"
-          ref="email"
-          value={email}
-          placeholder={placeholderEmail}
-          onChange={e => this.changeValue(e, 'email')}
-        />
-        <div className="row">
-          <div className="columns four">
-            <legend>
-              Sexe*
-            </legend>
-            <select
-              className="u-full-width"
-              ref="sexe"
-              onChange={e => this.changeValue(e, 'sexe')}
-            >
-              <option value="">--</option>
-              <option value="Man">Man</option>
-              <option value="Woman">Woman</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div className="columns eight">
-            <legend>
-              Birthday*
-            </legend>
-            <input
-              type="text"
-              ref="birthday"
-              value={birthday}
-              placeholder="dd/mm/yyyy"
-              onChange={e => this.changeValue(e, 'birthday')}
-            />
-          </div>
-        </div>
-        <legend>
-          Password*
-        </legend>
-        <input
-          type={showPassword ? 'text' : 'password'}
-          ref="password"
-          placeholder="Minimum eight characters, one capital, one number"
-          value={password}
-          onChange={e => this.changeValue(e, 'password')}
-          style={{color: colorPassword}}
-        />
-        {!showPassword ?
-          <FaEyeSlash
-            className="eye-icon"
-            onClick={() => this.setState({showPassword: !showPassword})}
-          /> :
-          <FaEye
-            className="eye-icon"
-            onClick={() => this.setState({showPassword: !showPassword})}
+      <div className="u-max-width-l">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+        </p>
+        <form onSubmit={this.handleSubmit} className="u-max-width-m">
+          <legend>
+            Username*
+          </legend>
+          {placeholderUsername}
+          <input
+            className="u-full-width"
+            type="text"
+            ref="username"
+            value={username}
+            placeholder={placeholderUsername}
+            alt="ton titre" title="ton titre"
+            onChange={e => this.changeValue(e, 'username')}
           />
-        }
-        <input
-          className="button-primary"
-          type="submit"
-          value="Submit"
-          style={{marginTop: 10}}
-        />
-      </form>
+          <legend>
+            Email*
+          </legend>
+          {placeholderEmail}
+          <input
+            className="u-full-width"
+            type="email"
+            ref="email"
+            value={email}
+            placeholder={placeholderEmail}
+            onChange={e => this.changeValue(e, 'email')}
+          />
+          <legend>
+            Sexe*
+          </legend>
+          <select
+            className="u-width-xxs"
+            ref="sexe"
+            onChange={e => this.changeValue(e, 'sexe')}
+          >
+            <option value="">--</option>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+            <option value="Other">Other</option>
+          </select>
+          <legend>
+            Birthday*
+          </legend>
+          Example: 20/06/1899
+          <input
+            className="u-full-width"
+            type="text"
+            ref="birthday"
+            value={birthday}
+            placeholder="dd/mm/yyyy"
+            onChange={e => this.changeValue(e, 'birthday')}
+          />
+          <legend>
+            Password*
+          </legend>
+          You should use minimum eight characters, one capital, one number
+          <input
+            className="u-full-width"
+            type={showPassword ? 'text' : 'password'}
+            ref="password"
+            placeholder="Minimum eight characters, one capital, one number"
+            value={password}
+            onChange={e => this.changeValue(e, 'password')}
+            style={{color: colorPassword}}
+          />
+          {!showPassword ?
+            <FaEyeSlash
+              className="eye-icon"
+              onClick={() => this.setState({showPassword: !showPassword})}
+            /> :
+            <FaEye
+              className="eye-icon"
+              onClick={() => this.setState({showPassword: !showPassword})}
+            />
+          }
+          <input
+            className="button-primary u-full-width"
+            type="submit"
+            value="Submit"
+            style={{marginTop: 10}}
+            />
+        </form>
+      </div>
     </div>;
   }
 }

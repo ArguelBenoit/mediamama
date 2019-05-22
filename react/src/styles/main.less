@@ -34,9 +34,7 @@ _________________________________________________
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-html {
-  overflow: hidden;
-}
+
 .container {
   position: relative;
   width: 100%;
@@ -289,9 +287,14 @@ select:focus {
 label,
 legend {
   display: block;
-  margin-bottom: .1rem;
-  font-size: 1.3rem;
-  opacity: 0.75; }
+  width: max-content;
+  font-size: 1.35rem;
+  padding: 0px 10px;
+  background: #20222a;
+  margin-bottom: 8px;
+  color: white;
+  font-family: 'arvo';
+}
 fieldset {
   padding: 0;
   border-width: 0; }
@@ -377,22 +380,78 @@ form {
 
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .u-full-width {
   width: 100%;
   box-sizing: border-box; }
 .u-max-full-width {
   max-width: 100%;
   box-sizing: border-box; }
+
 .u-pull-right {
   float: right; }
 .u-pull-left {
   float: left; }
+
 .u-border-error {
   border-bottom: 2px solid red !important; }
+
 .u-margin-bottom-five {
   margin-bottom: 5px !important; }
+
 .u-container-flex {
   display: flex; }
+
+.u-max-width-xxs {
+  max-width: 100px; }
+.u-max-width-xs {
+  max-width: 200px; }
+.u-max-width-s {
+  max-width: 300px; }
+.u-max-width-m {
+  max-width: 400px; }
+.u-max-width-l {
+  max-width: 500px; }
+.u-max-width-xl {
+  max-width: 600px; }
+.u-max-width-xxl {
+  max-width: 800px; }
+.u-max-width-xxxl {
+  max-width: 1000px; }
+
+.u-min-width-xxs {
+  min-width: 100px; }
+.u-min-width-xs {
+  min-width: 200px; }
+.u-min-width-s {
+  min-width: 300px; }
+.u-min-width-m {
+  min-width: 400px; }
+.u-min-width-l {
+  min-width: 500px; }
+.u-min-width-xl {
+  min-width: 600px; }
+.u-min-width-xxl {
+  min-width: 800px; }
+.u-min-width-xxxl {
+  min-width: 1000px; }
+
+.u-width-xxs {
+  width: 100px; }
+.u-width-xs {
+  width: 200px; }
+.u-width-s {
+  width: 300px; }
+.u-width-m {
+  width: 400px; }
+.u-width-l {
+  width: 500px; }
+.u-width-xl {
+  width: 600px; }
+.u-width-xxl {
+  width: 800px; }
+.u-width-xxxl {
+  width: 1000px; }
 
 
 

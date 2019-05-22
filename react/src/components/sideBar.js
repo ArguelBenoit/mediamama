@@ -18,6 +18,7 @@ export default props => {
     </ul>
     <ul>
       <LiSideBar route="/login" name="Login" icon={<MdSentimentSatisfied />} small />
+      <LiSideBar route="/subscribe" name="Subsribe" icon={<MdSentimentSatisfied />} small />
       <LiSideBar route="/write" name="write an new article" icon={<MdSentimentSatisfied />} small />
       <LiSideBar route="" name="Logout" icon={<IoMdLogOut />} onClick={() => destroyJwtCookie('/')} small />
     </ul>
