@@ -15,8 +15,8 @@ import Error from 'Pages/error';
 
 class App extends React.Component {
   render() {
+    // <MainLayout />
     return <Router history={history} >
-      // <MainLayout />
       <Switch>
         <Route path="/" exact component={Read} title="Read" />
         <Route path="/categ1" exact component={Read} title="Read" />

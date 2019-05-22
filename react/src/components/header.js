@@ -2,8 +2,8 @@ import React from 'react';
 import 'Styles/header.less';
 
 export default props => {
-  const { menu, clickMenu } = props;
-  return <header>
+  const { clickMenu, smallScreen } = props;
+  return <header className={smallScreen ? 'smallScreen' : ''}>
     <div className="button-menu" onClick={clickMenu}>
       <div />
       <div />

@@ -9,7 +9,7 @@ export default class extends React.Component {
     this.clickMenu = this.clickMenu.bind(this);
     this.resize = this.resize.bind(this);
     this.state = {
-      menu: undefined,
+      menuActive: undefined,
       smallScreen: undefined
     };
   }
@@ -24,16 +24,16 @@ export default class extends React.Component {
   }
   resize() {
     this.setState({
-      menu: window.innerWidth > 800 ? true : false,
+      menuActive: window.innerWidth > 800 ? true : false,
       smallScreen: window.innerWidth > 800 ? false : true
     });
   }
   clickMenu() {
-    this.setState({menu: !this.state.menu});
+    this.setState({menuActive: !this.state.menuActive});
   }
   render() {
     return <div>
-      <Header clickMenu={this.clickMenu} />
+      <Header  {...this.state} clickMenu={this.clickMenu} />
       <SideBar {...this.state} />
       <MainContainer {...this.state} content={this.props.content} />
     </div>;
