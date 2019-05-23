@@ -25,6 +25,7 @@ class App extends React.Component {
     super(props);
     this.clickMenu = this.clickMenu.bind(this);
     this.resize = this.resize.bind(this);
+    this.closeSideBarByContainer = this.closeSideBarByContainer.bind(this);
     this.state = {
       menuActive: undefined,
       smallScreen: undefined
@@ -48,12 +49,22 @@ class App extends React.Component {
   clickMenu() {
     this.setState({menuActive: !this.state.menuActive});
   }
+  closeSideBarByContainer() {
+    const { menuActive, smallScreen } = this.state;
+    if (smallScreen && menuActive) {
+      this.clickMenu();
+    }
+  }
   render() {
     const { menuActive, smallScreen } = this.state;
+    const classContainer = 'containerPage ' +
+      (menuActive ? 'menuActive ' : '') +
+      (smallScreen ? 'smallScreen ' : '') +
+      (smallScreen && menuActive ? 'blured' : '');
     return <Router history={history} >
       <Header {...this.state} clickMenu={this.clickMenu} />
       <SideBar {...this.state} />
-      <div className={`containerPage ${menuActive ? 'menuActive' : ''} ${smallScreen ? 'smallScreen' : ''}`}>
+      <div className={classContainer} onClick={this.closeSideBarByContainer}>
         <div className="container">
           <Switch>
             <Route path="/" exact component={AllNews} title="mediamama - all news" />

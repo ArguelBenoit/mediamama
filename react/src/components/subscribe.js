@@ -9,8 +9,8 @@ const regexPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$
 
 const placeholder = {
   init : {
-    placeholderUsername: 'Only alpha-numeric characters comma and space',
-    placeholderEmail: 'Your email will always be kept secret'
+    placeholderUsername: '(Only alpha-numeric characters comma and space)',
+    placeholderEmail: '(Your email will always be kept secret)'
   }
 };
 
@@ -24,7 +24,6 @@ export default class extends React.Component {
     this.clearValueInput = this.clearValueInput.bind(this);
     this.state = {
       username: '',
-      sexe: null,
       birthday: '',
       email: '',
       password: '',
@@ -78,12 +77,12 @@ export default class extends React.Component {
     switch (ref) {
       case 'username':
         this.setState({
-          placeholderUsername: userInput + ' is already taken...'
+          placeholderUsername: `(${userInput} is already taken...)`
         });
         break;
       case 'email':
         this.setState({
-          placeholderEmail: userInput + ' is already taken...'
+          placeholderEmail: `(${userInput} is already taken...)`
         });
         break;
       default:
@@ -91,11 +90,10 @@ export default class extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { username, sexe, birthday, email, password } = this.state;
+    const { username, birthday, email, password } = this.state;
     const postObj = {
       birthday: moment(birthday, 'DD/MM/YYYY').toDate(),
       username,
-      sexe,
       email,
       password
     };
@@ -154,65 +152,56 @@ export default class extends React.Component {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
         </p>
         <form onSubmit={this.handleSubmit} className="u-max-width-m">
+
           <legend>
             Username*
           </legend>
-          {placeholderUsername}
           <input
             className="u-full-width"
             type="text"
             ref="username"
             value={username}
-            placeholder={placeholderUsername}
-            alt="ton titre" title="ton titre"
             onChange={e => this.changeValue(e, 'username')}
           />
+          <p className="hint">
+            {placeholderUsername}
+          </p>
+
           <legend>
             Email*
           </legend>
-          {placeholderEmail}
           <input
             className="u-full-width"
             type="email"
             ref="email"
             value={email}
-            placeholder={placeholderEmail}
             onChange={e => this.changeValue(e, 'email')}
           />
-          <legend>
-            Sexe*
-          </legend>
-          <select
-            className="u-width-xxs"
-            ref="sexe"
-            onChange={e => this.changeValue(e, 'sexe')}
-          >
-            <option value="">--</option>
-            <option value="Man">Man</option>
-            <option value="Woman">Woman</option>
-            <option value="Other">Other</option>
-          </select>
+          <p className="hint">
+            {placeholderEmail}
+          </p>
+
           <legend>
             Birthday*
           </legend>
-          Example: 20/06/1899
           <input
             className="u-full-width"
             type="text"
             ref="birthday"
             value={birthday}
-            placeholder="dd/mm/yyyy"
             onChange={e => this.changeValue(e, 'birthday')}
           />
+          <p className="hint">
+            (Example: 20/06/1899)
+          </p>
+
           <legend>
             Password*
           </legend>
-          You should use minimum eight characters, one capital, one number
           <input
             className="u-full-width"
             type={showPassword ? 'text' : 'password'}
             ref="password"
-            placeholder="Minimum eight characters, one capital, one number"
             value={password}
             onChange={e => this.changeValue(e, 'password')}
             style={{color: colorPassword}}
@@ -227,12 +216,17 @@ export default class extends React.Component {
               onClick={() => this.setState({showPassword: !showPassword})}
             />
           }
+          <p className="hint">
+            (You should use minimum eight characters, one capital, one number)
+          </p>
+
           <input
             className="button-primary u-full-width"
             type="submit"
             value="Submit"
             style={{marginTop: 10}}
-            />
+          />
+
         </form>
       </div>
     </div>;

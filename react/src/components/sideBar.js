@@ -8,7 +8,7 @@ import LiSideBar from 'Components/liSideBar';
 import 'Styles/sideBar.less';
 
 export default props => {
-  const className = `sideBar ${props.menuActive ? 'menuActive' : ''}`
+  const className = `sideBar ${props.menuActive ? 'menuActive' : ''}`;
   return <div className={className}>
     <ul>
       <LiSideBar route="/" name="All news" icon={<TiChartLine />} />
