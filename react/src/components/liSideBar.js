@@ -1,35 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import 'Styles/liSideBar.less';
 
-class LiSideBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const { route, icon, name, small } = this.props;
-    const pathname = window.location.pathname;
-    return <Link className="liSideBar" to={route}>
-      <li className={`${pathname === route ? 'active' : ''} ${small ? 'small' : ''}`}>
-        {icon}
-        <span>
-          {name}
-        </span>
-      </li>
-    </Link>;
-  }
-}
+let LiSideBar = props => {
+  const {
+    route,
+    icon,
+    name,
+    small,
+    location
+  } = props;
+  return <Link className="liSideBar" to={route}>
+    <li className={`${location === route ? 'active' : ''} ${small ? 'small' : ''}`}>
+      {icon}
+      <span>
+        {name}
+      </span>
+    </li>
+  </Link>;
+};
 
 LiSideBar.defaultProps = {
-  small: false
+  small: false,
+  location: ''
 };
 
 LiSideBar.propTypes = {
   route: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   icon: PropTypes.element,
-  small: PropTypes.bool
+  small: PropTypes.bool,
+  location: PropTypes.string
 };
 
 export default LiSideBar;

@@ -27,8 +27,8 @@ class App extends React.Component {
     this.resize = this.resize.bind(this);
     this.closeSideBarByContainer = this.closeSideBarByContainer.bind(this);
     this.state = {
-      menuActive: undefined,
-      smallScreen: undefined
+      menuActive: window.innerWidth > 800 ? true : false || false,
+      smallScreen: window.innerWidth > 800 ? false : true || false
     };
   }
   componentWillMount() {
@@ -63,17 +63,17 @@ class App extends React.Component {
       (smallScreen && menuActive ? 'blured' : '');
     return <Router history={history} >
       <Header {...this.state} clickMenu={this.clickMenu} />
-      <SideBar {...this.state} />
+      <SideBar {...this.state} history={history} />
       <div className={classContainer} onClick={this.closeSideBarByContainer}>
         <div className="container">
           <Switch>
-            <Route path="/" exact component={AllNews} title="mediamama - all news" />
-            <Route path="/categ1" exact component={Categ1} title="Categ 1" />
-            <Route path="/categ2" exact component={Categ2} title="Categ 2" />
-            <Route path="/categ3" exact component={Categ3} title="Categ 3" />
-            <Route path="/login" exact component={Login} title="Login" />
-            <Route path="/subscribe" exact component={Subsribe} title="Login" />
-            <PrivateRoute path="/write" exact component={Write} title="Write an article"/>
+            <Route path="/" exact component={AllNews} />
+            <Route path="/categ1" exact component={Categ1} />
+            <Route path="/categ2" exact component={Categ2} />
+            <Route path="/categ3" exact component={Categ3} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/subscribe" exact component={Subsribe} />
+            <PrivateRoute path="/write" exact component={Write} />
             <Route component={Error} />
           </Switch>
         </div>

@@ -8,6 +8,8 @@
     padding: 0 10px;
     height: 52px;
     box-sizing: border-box;
+    border-right: solid 3px transparent;
+    transition-duration: 200ms;
     span { margin-left: 10px; }
     svg {
       position: relative;
@@ -22,13 +24,17 @@
     &:hover,
     &:focus {
       background: #e2e1e0;
-      border-right: 2px solid #111;
+      border-right: solid 3px transparent;
       svg { background: #20232a; }
     }
     &.active {
-      background: #e4dfd7;
-      border-right: solid 2px #20232a;
+      background: #dbdbdb;
+      border-right: solid 3px #20232a;
       svg { background: #20232a; }
+    }
+    &:active {
+      background: #d3d0d0;
+      border-right: solid 3px transparent;
     }
     &.small {
       height: 40px;
