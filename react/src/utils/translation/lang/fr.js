@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   menu: {
     login: 'Connexion',
     logout: 'Déconnexion',
