@@ -8,6 +8,7 @@ import { IoMdLogOut } from 'react-icons/io';
 import LiSideBar from 'Components/liSideBar';
 import PropTypes from 'prop-types';
 import 'Styles/sideBar.less';
+import lang from 'Utils/translation';
 
 const firstUl = [
   {
@@ -32,11 +33,11 @@ const firstUl = [
 const secondUl = [
   {
     route: '/login',
-    name: 'Login',
+    name: lang('menu.login'),
     icon: <MdSentimentSatisfied />
   }, {
     route: '/subscribe',
-    name: 'Subsribe',
+    name: lang('menu.subscribe'),
     icon: <MdSentimentSatisfied />
   }, {
     route: '/write',

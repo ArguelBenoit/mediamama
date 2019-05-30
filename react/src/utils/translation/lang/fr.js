@@ -1,13 +1,13 @@
 module.exports = {
   menu: {
-    login: 'Connexion',
-    logout: 'Déconnexion',
-    subscribe: 'Inscription'
+    login: '',
+    logout: '',
+    subscribe: ''
   },
   page: {
     login: {
-      title: '',
-      submit: ''
+      submit: '',
+      title: ''
     },
     subscribe: {
       title: '',
