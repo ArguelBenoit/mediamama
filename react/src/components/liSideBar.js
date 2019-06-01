@@ -28,7 +28,19 @@ LiSideBar.defaultProps = {
 
 LiSideBar.propTypes = {
   route: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.oneOfType(
+    [
+      PropTypes.string,
+      PropTypes.arrayOf(
+        PropTypes.oneOfType(
+          [
+            PropTypes.string,
+            PropTypes.element
+          ]
+        )
+      )
+    ]
+  ).isRequired,
   icon: PropTypes.element,
   small: PropTypes.bool,
   location: PropTypes.string

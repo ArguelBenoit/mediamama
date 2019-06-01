@@ -8,7 +8,7 @@ import { IoMdLogOut } from 'react-icons/io';
 import LiSideBar from 'Components/liSideBar';
 import PropTypes from 'prop-types';
 import 'Styles/sideBar.less';
-import lang from 'Utils/translation';
+import { translate, conversionLang } from 'Utils/translation';
 
 const firstUl = [
   {
@@ -33,11 +33,11 @@ const firstUl = [
 const secondUl = [
   {
     route: '/login',
-    name: lang('menu.login'),
+    name: translate('menu.login'),
     icon: <MdSentimentSatisfied />
   }, {
     route: '/subscribe',
-    name: lang('menu.subscribe'),
+    name: translate('menu.subscribe'),
     icon: <MdSentimentSatisfied />
   }, {
     route: '/write',
@@ -100,6 +100,14 @@ class SideBar extends React.Component {
       </ul>
       <div className="toggleButton">
         <FaChevronRight />
+      </div>
+      <div style={{padding: '0 20px'}}>
+        <label>{translate('menu.selectLang')}</label>
+        <select className="u-full-width">
+          {Object.keys(conversionLang).map( (e, i) => {
+            return <option value={e} key={i}>{conversionLang[e]}</option>;
+          })}
+        </select>
       </div>
     </div>;
   }

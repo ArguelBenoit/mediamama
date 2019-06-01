@@ -2,7 +2,8 @@ module.exports = {
   menu: {
     login: '',
     logout: '',
-    subscribe: ''
+    subscribe: '',
+    selectLang: ''
   },
   page: {
     login: {
