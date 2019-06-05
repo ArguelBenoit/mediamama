@@ -49,18 +49,27 @@ const secondUl = [
 class SideBar extends React.Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       location: window.location.pathname
     };
   }
   componentDidMount() {
     history.listen( ({ pathname }) =>  {
-      this.setState({ location: pathname });
+      this.setState(
+        {
+          location: pathname
+        }
+      );
     });
+  }
+  handleChange(event) {
+    this.props.changeLang(event.target.value);
   }
   render() {
     const { location } = this.state;
-    const className = `sideBar ${this.props.menuActive ? 'menuActive' : ''}`;
+    const { menuActive, selectedLang } = this.props;
+    const className = `sideBar ${menuActive ? 'menuActive' : ''}`;
     return <div className={className}>
       <ul>
         {
@@ -103,7 +112,11 @@ class SideBar extends React.Component {
       </div>
       <div style={{padding: '0 20px'}}>
         <label>{translate('menu.selectLang')}</label>
-        <select className="u-full-width">
+        <select
+          className="u-full-width"
+          value={selectedLang}
+          onChange={this.handleChange}
+        >
           {Object.keys(conversionLang).map( (e, i) => {
             return <option value={e} key={i}>{conversionLang[e]}</option>;
           })}
@@ -114,7 +127,9 @@ class SideBar extends React.Component {
 }
 
 SideBar.propTypes = {
-  menuActive: PropTypes.bool
+  menuActive: PropTypes.bool,
+  selectedLang: PropTypes.string,
+  changeLang: PropTypes.func
 };
 
 export default SideBar;

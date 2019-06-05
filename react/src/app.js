@@ -4,6 +4,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import 'Styles/main.less';
 import 'Styles/containerPage.less';
 import '@babel/polyfill';
+import { browserLanguage } from 'Utils/translation';
 import history from 'Utils/history';
 import PrivateRoute from 'Components/privateRoute';
 import Header from 'Components/header';
@@ -17,8 +18,6 @@ import Login from 'Pages/login';
 import Error from 'Pages/error';
 import Write from 'Pages/write';
 import Subsribe from 'Pages/subscribe';
-import { arch } from 'os';
-
 
 
 class App extends React.Component {
@@ -26,10 +25,12 @@ class App extends React.Component {
     super(props);
     this.clickMenu = this.clickMenu.bind(this);
     this.resize = this.resize.bind(this);
+    this.changeLang = this.changeLang.bind(this);
     this.closeSideBarByContainer = this.closeSideBarByContainer.bind(this);
     this.state = {
       menuActive: window.innerWidth > 800 ? true : false || false,
-      smallScreen: window.innerWidth > 800 ? false : true || false
+      smallScreen: window.innerWidth > 800 ? false : true || false,
+      selectedLang: browserLanguage()
     };
   }
   componentWillMount() {
@@ -56,15 +57,20 @@ class App extends React.Component {
       this.clickMenu();
     }
   }
+  changeLang(selectedLang) {
+    this.setState({selectedLang});
+    localStorage.setItem('lang', selectedLang);
+    location.reload();
+  }
   render() {
-    const { menuActive, smallScreen } = this.state;
+    const { menuActive, smallScreen, selectedLang } = this.state;
     const classContainer = 'containerPage ' +
       (menuActive ? 'menuActive ' : '') +
       (smallScreen ? 'smallScreen ' : '') +
       (smallScreen && menuActive ? 'blured' : '');
     return <Router history={history} >
       <Header {...this.state} clickMenu={this.clickMenu} />
-      <SideBar {...this.state} history={history} />
+      <SideBar {...this.state} history={history} changeLang={this.changeLang} lang={selectedLang} />
       <div className={classContainer} onClick={this.closeSideBarByContainer}>
         <div className="container">
           <Switch>

@@ -1,32 +1,25 @@
 import _ from 'lodash';
-import React from 'react';
-import TranslateIcon from 'Components/translateIcon';
+
+let browserLanguage = () => {
+  if(localStorage.lang) {
+    return localStorage.lang;
+  } else {
+    let lang = navigator.language || navigator.userLanguage;
+    return (lang[0] + lang[1]);
+  }
+};
 
 let translate = path => {
-
-  let lang = navigator.language || navigator.userLanguage;
-  lang = lang[0] + lang[1];
-
-  var obj;
-  var objEn = require('./lang/en.js');
-  let langExists = true;
+  let lang = browserLanguage();
+  let obj;
   try {
     obj = require(`./lang/${lang}.js`);
   } catch {
     obj = require('./lang/en.js');
-    langExists = false;
   }
-
+  let objEn = require('./lang/en.js');
   let value = _.get(obj, path);
-  if (!value || value === '') {
-    value = [
-      _.get(objEn, path),
-      langExists ?
-        <TranslateIcon key="1" lang={lang} /> :
-        ''
-    ];
-  }
-
+  if (!value || value === '') value = _.get(objEn, path);
   return value;
 };
 
@@ -48,21 +41,8 @@ let conversionLang = {
   zh: '中文' // Chinese
 };
 
-export { translate, conversionLang };
-
-/********
-example proptypes if you send trad into a props
-  translat: PropTypes.oneOfType(
-    [
-      PropTypes.string,
-      PropTypes.arrayOf(
-        PropTypes.oneOfType(
-          [
-            PropTypes.string,
-            PropTypes.element
-          ]
-        )
-      )
-    ]
-  ).isRequired
-***********/
+export {
+  translate,
+  conversionLang,
+  browserLanguage
+};
