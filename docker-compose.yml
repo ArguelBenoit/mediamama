@@ -14,17 +14,6 @@ services:
       - MONGO_INITDB_DATABASE=hapi
       - DATABASE_NAME=hapi
 
-  hapi:
-    build: hapi
-    working_dir: /app/hapi
-    volumes:
-      - ./hapi:/app/hapi
-    ports:
-      - 8000:8000
-    command: npm run start
-    depends_on:
-      - mongo
-
   react:
     build: react
     working_dir: /app/react
@@ -34,7 +23,29 @@ services:
       - 3000:3000
     command: npm run dev
     depends_on:
-    - hapi
+    - express
+
+  express:
+    build: express
+    working_dir: /app/express
+    volumes:
+      - ./express:/app/express
+    ports:
+      - 8000:8000
+    command: npm run dev
+    depends_on:
+    - mongo
+
+  # hapi:
+  #   build: hapi
+  #   working_dir: /app/hapi
+  #   volumes:
+  #     - ./hapi:/app/hapi
+  #   ports:
+  #     - 8000:8000
+  #   command: npm run start
+  #   depends_on:
+  #     - mongo
 
   # nginx:
   #   build: nginx

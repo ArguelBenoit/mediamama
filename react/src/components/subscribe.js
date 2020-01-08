@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import request from 'Utils/request';
-import moment from 'moment';
 import { setJwtCookie } from 'Utils/jwtCookie';
 import 'Styles/login.less';
 const regexPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
@@ -24,7 +23,6 @@ export default class extends React.Component {
     this.clearValueInput = this.clearValueInput.bind(this);
     this.state = {
       username: '',
-      birthday: '',
       email: '',
       password: '',
       showPassword: false,
@@ -45,10 +43,6 @@ export default class extends React.Component {
         break;
       case 'email':
         this.setState({placeholderEmail: placeholder.init.placeholderEmail});
-        break;
-      case 'birthday':
-        var str = value.replace(' ', '/').replace('.', '/').replace('-', '/');
-        this.setState({birthday: str});
         break;
       case 'password':
         this.setState({colorPassword: regexPassword.test(value) ? '#007c00' : '#d40000'});
@@ -90,9 +84,8 @@ export default class extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { username, birthday, email, password } = this.state;
+    const { username, email, password } = this.state;
     const postObj = {
-      birthday: moment(birthday, 'DD/MM/YYYY').toDate(),
       username,
       email,
       password
@@ -100,7 +93,7 @@ export default class extends React.Component {
     Object.keys(postObj).forEach( key => {
       this.toggleBorderError(key, false);
     });
-    request('post', '/api/users', postObj)
+    request('post', '/api/user/subscribe', postObj)
       .then(res => {
         setJwtCookie(res.data.id_token, '/dashboard');
       })
@@ -136,7 +129,6 @@ export default class extends React.Component {
   render () {
     const {
       showPassword,
-      birthday,
       placeholderEmail,
       placeholderUsername,
       email,
@@ -179,20 +171,6 @@ export default class extends React.Component {
           />
           <p className="hint">
             {placeholderEmail}
-          </p>
-
-          <legend>
-            Birthday*
-          </legend>
-          <input
-            className="u-full-width"
-            type="text"
-            ref="birthday"
-            value={birthday}
-            onChange={e => this.changeValue(e, 'birthday')}
-          />
-          <p className="hint">
-            (Example: 20/06/1899)
           </p>
 
           <legend>
