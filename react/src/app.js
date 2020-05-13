@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom';
-import 'Styles/main.less';
+import 'Styles/skeleton.less';
+import 'Styles/color.less';
 import 'Styles/containerPage.less';
 import '@babel/polyfill';
 import { browserLanguage } from 'Utils/translation';

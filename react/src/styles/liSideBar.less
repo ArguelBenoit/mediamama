@@ -1,6 +1,5 @@
 .liSideBar  {
   list-style-type: none;
-  color: #383838;
   z-index: 1;
   padding-top: 50px;
   li {
@@ -17,24 +16,15 @@
       height: 20px;
       width: 20px;
       padding: 6px;
-      background: #909090;
       border-radius: 50%;
-      color: white;
     }
     &:hover,
-    &:focus {
-      background: #e2e1e0;
+    &:focus,
+    &:active {
       border-right: solid 3px transparent;
-      svg { background: #20232a; }
     }
     &.active {
-      background: #dbdbdb;
-      border-right: solid 3px #20232a;
-      svg { background: #20232a; }
-    }
-    &:active {
-      background: #d3d0d0;
-      border-right: solid 3px transparent;
+      border-right: solid 3px;
     }
     &.small {
       height: 40px;

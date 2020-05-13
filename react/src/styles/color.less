@@ -1,0 +1,111 @@
+
+@light-color: #20ff00;
+@medium-color: #118400;
+@dark-color: #072902;
+//
+@main-background: #00161a;
+@detail-background: #002229;
+//
+@input-background: @detail-background;
+@text-color: #eee;
+
+
+
+#root {
+  header {
+    background: @main-background;
+    border-bottom: 1px solid @medium-color;
+    .button-menu {
+      background: @dark-color;
+      >div {
+        background: @light-color;
+      }
+      &:active {
+        background: @detail-background;
+      }
+    }
+    h1 {
+      color: @text-color;
+    }
+  }
+  .sideBar {
+    background: @main-background;
+    border-right: 1px solid @medium-color;
+    .liSideBar  {
+      li {
+        color: @text-color;
+        svg {
+          background: @dark-color;
+          color: @light-color;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+          background: @detail-background;
+        }
+        &.active {
+          background: @detail-background;
+          border-right-color: @light-color;
+        }
+      }
+    }
+  }
+  .containerPage {
+    color: @text-color;
+    background: @main-background;
+  }
+  // select button input etc...
+  label,
+  legend {
+    background: @medium-color;
+  }
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="password"],
+  input[type="date"],
+  textarea,
+  select {
+    color: @text-color;
+    background: @input-background;
+  }
+  select:-moz-focusring {
+    color: @text-color;
+  }
+  option:not(:checked) {
+    color: @text-color;
+  }
+  button, button.primary {
+    background: @dark-color;
+  }
+  // button
+  .button,
+  button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"] {
+    color: @text-color;
+  }
+  .button.button-primary,
+  button.button-primary,
+  input[type="submit"].button-primary,
+  input[type="reset"].button-primary,
+  input[type="button"].button-primary {
+    color: @text-color;
+    background-color: @medium-color;
+  }
+  .button.button-primary:active,
+  button.button-primary:active,
+  input[type="submit"].button-primary:active,
+  input[type="reset"].button-primary:active,
+  input[type="button"].button-primary:active {
+    background-color: @medium-color;
+    opacity: 0.9;
+  }
+  a {
+    color: @light-color;
+  }
+}

@@ -110,7 +110,7 @@ class SideBar extends React.Component {
       <div className="toggleButton">
         <FaChevronRight />
       </div>
-      <div style={{padding: '0 20px'}}>
+      <div style={{padding: '0 12px'}}>
         <label>{translate('menu.selectLang')}</label>
         <select
           className="u-full-width"

@@ -6,6 +6,9 @@ var fs = require('fs');
 var lang;
 var hasModify = {};
 
+// TODO :
+// suppression si absence
+// indentation
 // ------------------------------------------------
 function recursiveParse(baseObject, objectParsed, langName) {
   Object.keys(baseObject).forEach(function(key) {
@@ -14,14 +17,14 @@ function recursiveParse(baseObject, objectParsed, langName) {
       if(!objectParsed[key] && objectParsed[key] !== '') {
         objectParsed[key] = '';
         hasModify[langName] = true;
-        console.log(`🍕  ${langName}: string key "${key}" is added`);
+        console.log(`🍕 ${langName}: string key "${key}" is added`);
       }
 
     } else if (typeof baseObject[key] === 'object') {
       if (!objectParsed[key]) {
         objectParsed[key] = {};
         hasModify[langName] = true;
-        console.log(`🍕  ${langName}: object key "${key}" is added`);
+        console.log(`🍕 ${langName}: object key "${key}" is added`);
       }
       recursiveParse(baseObject[key], objectParsed[key], langName);
 
@@ -60,9 +63,9 @@ or you can use "all" for update all lang files example:
       fs.writeFile(route + e, jsText , function(err) {
         if(err) return console.log(err);
         if(hasModify[e])
-          console.log(`🦄  ${e} was updated!`);
+          console.log(`🦄 ${e} was updated!`);
         else
-          console.log(`🍺  ${e} is already up to date!`);
+          console.log(`🍺 ${e} is already up to date!`);
       });
     }
   });
@@ -89,9 +92,9 @@ or you can use "all" for update all lang files example:
   fs.writeFile(route + parameterLang + '.js', jsText , function(err) {
     if(err) return console.log(err);
     if(hasModify[parameterLang + '.js'])
-      console.log(`🦄  ${parameterLang + '.js'} was ${newFile ? 'created' : 'updated'}!`);
+      console.log(`🦄 ${parameterLang + '.js'} was ${newFile ? 'created' : 'updated'}!`);
     else
-      console.log(`🍺  ${parameterLang + '.js'} is already up to date!`);
+      console.log(`🍺 ${parameterLang + '.js'} is already up to date!`);
   });
 
 }
