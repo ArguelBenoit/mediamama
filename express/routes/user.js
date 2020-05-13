@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const createToken = require('../util/token');
+const createToken = require('../utils/token');
 
 function hashPassword(password, callback) {
   bcrypt.genSalt(10, (err, salt) => {
@@ -14,16 +14,17 @@ exports.router = () => {
 
     .post('/subscribe', (req, res) => {
       let user = req.body;
-      hashPassword(user.password, (err, hash) => {
-        if (err) {
-          res.status(500).json({ message: 'ici et là'});
-        } else {
-          user.password = hash;
-          // création de l'utilisateur
-          // renvoi du token de login
-          res.status(200).json({ id_token: createToken(user) });
-        }
-      });
+      console.log(user);
+      // hashPassword(user.password, (err, hash) => {
+      //   if (err) {
+      //     res.status(500).json({ message: 'ici et là'});
+      //   } else {
+      //     user.password = hash;
+      //     // création de l'utilisateur
+      //     // renvoi du token de login
+      //     res.status(200).json({ id_token: createToken(user) });
+      //   }
+      // });
     });
 
     // .post('/login', (req, res) => {

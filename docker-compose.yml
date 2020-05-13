@@ -2,6 +2,7 @@ version: "3"
 
 services:
 
+  # mongo 3.2
   mongo:
     build: mongo
     ports:
@@ -14,6 +15,7 @@ services:
       - MONGO_INITDB_DATABASE=hapi
       - DATABASE_NAME=hapi
 
+  # node 12
   react:
     build: react
     working_dir: /app/react
@@ -25,6 +27,7 @@ services:
     depends_on:
     - express
 
+  # node 12
   express:
     build: express
     working_dir: /app/express
@@ -35,17 +38,6 @@ services:
     command: npm run dev
     depends_on:
     - mongo
-
-  # hapi:
-  #   build: hapi
-  #   working_dir: /app/hapi
-  #   volumes:
-  #     - ./hapi:/app/hapi
-  #   ports:
-  #     - 8000:8000
-  #   command: npm run start
-  #   depends_on:
-  #     - mongo
 
   # nginx:
   #   build: nginx

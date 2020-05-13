@@ -1,15 +1,18 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const secret = require('../../../config');
+const secret = require('../secret');
 
 function createToken(user) {
-  // Sign the JWT
-  return jwt.sign(
-    { id: user._id, username: user.username },
-    secret,
-    { algorithm: 'HS256', expiresIn: '1h' }
-  );
+  const userObject = {
+    id: user._id,
+    username: user.username
+  };
+  const jwtObject = {
+    algorithm: 'HS256',
+    expiresIn: '1h'
+  };
+  return jwt.sign(userObject, secret, jwtObject);
 }
 
 module.exports = createToken;

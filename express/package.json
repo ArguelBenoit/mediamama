@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "description": "api of cotton-cloud",
+  "description": "Api of mediamama with express.js",
   "scripts": {
     "dev": "npm i && npm i -g nodemon && nodemon server.js",
     "start": "npm i && node server.js"
