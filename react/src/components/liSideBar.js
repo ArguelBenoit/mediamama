@@ -13,7 +13,10 @@ let LiSideBar = props => {
   } = props;
   return <Link className="liSideBar" to={route}>
     <li className={`${location === route ? 'active' : ''} ${small ? 'small' : ''}`}>
-      {icon}
+      {icon ?
+        icon :
+        ''
+      }
       <span>
         {name}
       </span>
@@ -41,7 +44,12 @@ LiSideBar.propTypes = {
       )
     ]
   ).isRequired,
-  icon: PropTypes.element,
+  icon: PropTypes.oneOfType(
+    [
+      PropTypes.bool,
+      PropTypes.element
+    ]
+  ),
   small: PropTypes.bool,
   location: PropTypes.string
 };

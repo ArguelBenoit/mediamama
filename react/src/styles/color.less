@@ -1,63 +1,64 @@
 
-@light-color: #20ff00;
-@medium-color: #118400;
-@dark-color: #072902;
+@light-detail: #20ff00;
+@medium-detail: #118400;
+@dark-detail: #072902;
 //
-@main-background: #00161a;
-@detail-background: #002229;
+@dark-background: #000;
+@medium-background: #00161a;
+@light-background: #002229;
 //
-@input-background: @detail-background;
-@text-color: #eee;
+@input: @medium-background;
+@text: #eee;
 
 
 
 #root {
   header {
-    background: @main-background;
-    border-bottom: 1px solid @medium-color;
+    background: @dark-background;
+    border-bottom: 1px solid @medium-detail;
     .button-menu {
-      background: @dark-color;
+      background: @dark-detail;
       >div {
-        background: @light-color;
+        background: @light-detail;
       }
       &:active {
-        background: @detail-background;
+        background: @medium-background;
       }
     }
     h1 {
-      color: @text-color;
+      color: @text;
     }
   }
   .sideBar {
-    background: @main-background;
-    border-right: 1px solid @medium-color;
+    background: @dark-background;
+    // border-right: 1px solid @medium-detail;
     .liSideBar  {
       li {
-        color: @text-color;
+        color: @text;
         svg {
-          background: @dark-color;
-          color: @light-color;
+          background: @dark-detail;
+          color: @light-detail;
         }
         &:hover,
         &:focus,
         &:active {
-          background: @detail-background;
+          background: @medium-background;
         }
         &.active {
-          background: @detail-background;
-          border-right-color: @light-color;
+          background: @medium-background;
+          border-right-color: @light-detail;
         }
       }
     }
   }
   .containerPage {
-    color: @text-color;
-    background: @main-background;
+    color: @text;
+    background: @medium-background;
   }
   // select button input etc...
   label,
   legend {
-    background: @medium-color;
+    background: @medium-detail;
   }
   input[type="email"],
   input[type="number"],
@@ -69,17 +70,18 @@
   input[type="date"],
   textarea,
   select {
-    color: @text-color;
-    background: @input-background;
+    color: @text;
+    background: @input;
+    border: 1px solid @dark-detail;
   }
   select:-moz-focusring {
-    color: @text-color;
+    color: @text;
   }
   option:not(:checked) {
-    color: @text-color;
+    color: @text;
   }
   button, button.primary {
-    background: @dark-color;
+    background: @dark-detail;
   }
   // button
   .button,
@@ -87,25 +89,25 @@
   input[type="submit"],
   input[type="reset"],
   input[type="button"] {
-    color: @text-color;
+    color: @text;
   }
   .button.button-primary,
   button.button-primary,
   input[type="submit"].button-primary,
   input[type="reset"].button-primary,
   input[type="button"].button-primary {
-    color: @text-color;
-    background-color: @medium-color;
+    color: @text;
+    background-color: @medium-detail;
   }
   .button.button-primary:active,
   button.button-primary:active,
   input[type="submit"].button-primary:active,
   input[type="reset"].button-primary:active,
   input[type="button"].button-primary:active {
-    background-color: @medium-color;
+    background-color: @medium-detail;
     opacity: 0.9;
   }
   a {
-    color: @light-color;
+    color: @light-detail;
   }
 }

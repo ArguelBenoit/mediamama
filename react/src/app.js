@@ -12,9 +12,6 @@ import Header from 'Components/header';
 import SideBar from 'Components/sideBar';
 // pages
 import AllNews from 'Pages/allNews';
-import Categ1 from 'Pages/categ1';
-import Categ2 from 'Pages/categ2';
-import Categ3 from 'Pages/categ3';
 import Login from 'Pages/login';
 import Error from 'Pages/error';
 import Write from 'Pages/write';
@@ -76,9 +73,6 @@ class App extends React.Component {
         <div className="container">
           <Switch>
             <Route path="/" exact component={AllNews} />
-            <Route path="/categ1" exact component={Categ1} />
-            <Route path="/categ2" exact component={Categ2} />
-            <Route path="/categ3" exact component={Categ3} />
             <Route path="/login" exact component={Login} />
             <Route path="/subscribe" exact component={Subsribe} />
             <PrivateRoute path="/write" exact component={Write} />

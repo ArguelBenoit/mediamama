@@ -1,7 +1,6 @@
 import React from 'react';
 import history from 'Utils/history';
 import { destroyJwtCookie } from 'Utils/jwtCookie';
-import { TiChartLine } from 'react-icons/ti';
 import { FaChevronRight } from 'react-icons/fa';
 import { MdSentimentSatisfied } from 'react-icons/md';
 import { IoMdLogOut } from 'react-icons/io';
@@ -13,20 +12,19 @@ import { translate, conversionLang } from 'Utils/translation';
 const firstUl = [
   {
     route: '/',
-    name: 'All news',
-    icon: <TiChartLine />
+    name: 'All news'
   }, {
-    route: '/categ1',
-    name: 'Categ 1',
-    icon: <TiChartLine />
+    route: '/geopolitics',
+    name: 'geopolitics'
   }, {
-    route: '/categ2',
-    name: 'Categ 2',
-    icon: <TiChartLine />
+    route: '/newsitem',
+    name: 'News item'
   }, {
-    route: '/categ3',
-    name: 'Categ 3',
-    icon: <TiChartLine />
+    route: '/science',
+    name: 'science'
+  }, {
+    route: '/philosophy',
+    name: 'philosophy'
   }
 ];
 
@@ -78,7 +76,7 @@ class SideBar extends React.Component {
                         key={'firstMenu' + i}
                         route={e.route}
                         name={e.name}
-                        icon={e.icon}
+                        icon={false}
                         location={location}
                       />
           )
