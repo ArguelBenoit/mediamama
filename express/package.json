@@ -2,8 +2,7 @@
   "name": "api",
   "description": "Api of mediamama with express.js",
   "scripts": {
-    "dev": "npm i && npm i -g nodemon && nodemon server.js",
-    "start": "npm i && node server.js"
+    "start": "npm i && nodemon --exec babel-node src/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -12,12 +11,16 @@
     "fs-extra": "^8.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "mongoose": "^5.8.0"
+    "mongoose": "^5.9.15"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
     "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0",
     "eslint-config-benoitarguel": "^0.2.2",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.14.3",
+    "nodemon": "^2.0.4"
   }
 }

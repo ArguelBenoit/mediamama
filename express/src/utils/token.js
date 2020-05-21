@@ -1,7 +1,7 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const secret = require('../secret');
+import config from '../../config';
 
 function createToken(user) {
   const userObject = {
@@ -12,7 +12,7 @@ function createToken(user) {
     algorithm: 'HS256',
     expiresIn: '1h'
   };
-  return jwt.sign(userObject, secret, jwtObject);
+  return jwt.sign(userObject, config.secret, jwtObject);
 }
 
 module.exports = createToken;

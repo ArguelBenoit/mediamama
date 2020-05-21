@@ -35,7 +35,7 @@ services:
       - ./express:/app/express
     ports:
       - 8000:8000
-    command: npm run dev
+    command: npm run start
     depends_on:
     - mongo
 
