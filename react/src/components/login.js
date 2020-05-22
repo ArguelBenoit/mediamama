@@ -80,9 +80,9 @@ export default class extends React.Component {
       [emailValidation(login) ? 'email' : 'username']: login,
       password
     };
-    request('post', '/api/users/authenticate', postObj)
+    request('post', '/api/user/login', postObj)
       .then(res => {
-        setJwtCookie(res.data.id_token, '/dashboard');
+        setJwtCookie(res.data.id_token, '/write');
       })
       .catch(err => {
         if (err.response && err.response.data.message === 'Incorrect username or email!') {

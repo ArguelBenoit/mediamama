@@ -18,10 +18,6 @@ connectDb().then(() => {
     next();
   });
 
-  // const user = require('./routes/user').router;
   app.use('/api/user', routes.user);
-  app.get('/', (req, res) => {
-    res.send('Hello World!');
-  });
 
 }).catch(err => console.log(err));

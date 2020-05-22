@@ -95,7 +95,7 @@ export default class extends React.Component {
     });
     request('post', '/api/user/subscribe', postObj)
       .then(res => {
-        setJwtCookie(res.data.id_token, '/dashboard');
+        setJwtCookie(res.data.id_token, '/write');
       })
       .catch(err => {
         if (err.response &&
